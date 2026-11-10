@@ -22,12 +22,22 @@ class Inventory:
         for product in self.products:
             print(f"{product.name}: {product.quantity}")
 
-
+    def restock(self, name, amount):
+        if amount <= 0:
+            return False
+        for product in self.products:
+            if product.name == name:
+                product.quantity += amount
+                return True    
+        return False
+    
 def main():
     inventory = Inventory()
     inventory.add_product("Notebook", 5)
     inventory.add_product("Pen", 2)
     print("Current inventory:")
+    inventory.show_products()
+    inventory.restock("Notebook", 3)
     inventory.show_products()
 
 
