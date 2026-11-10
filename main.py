@@ -30,6 +30,15 @@ class Inventory:
                 product.quantity += amount
                 return True    
         return False
+
+    def low_stock(self, minimum):
+        result = []
+    
+        for product in self.products:
+            if product.quantity < minimum:
+                result.append(product.name)
+    
+        return result
     
 def main():
     inventory = Inventory()
